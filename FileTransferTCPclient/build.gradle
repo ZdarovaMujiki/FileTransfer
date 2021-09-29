@@ -1,0 +1,37 @@
+plugins {
+    id 'application'
+}
+
+application {
+    mainClass = 'Client'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    annotationProcessor 'org.projectlombok:lombok:1.18.16'
+    compileOnly 'org.projectlombok:lombok:1.18.16'
+    implementation 'org.projectlombok:lombok:1.18.16'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+jar {
+    archiveBaseName.set('client')
+    archiveClassifier.set('')
+    archiveVersion.set('')
+    manifest {
+        attributes(
+                'Main-Class': 'Client'
+        )
+    }
+}
