@@ -34,11 +34,11 @@ public class Server {
             scheduledExecutorService.scheduleAtFixedRate(speedCounter, SPEED_CHECK_DELAY, SPEED_CHECK_DELAY, TimeUnit.SECONDS);
             receiveProtocol.receiveFile();
             receiveProtocol.sendTransferStatus();
-            log.info(fileName + " downloading finished");
-
             scheduledExecutorService.awaitTermination(SPEED_CHECK_DELAY, TimeUnit.SECONDS);
+            log.info(fileName + " downloading finished");
         }
         catch (IOException | InterruptedException e) {
+            e.printStackTrace();
             log.log(Level.WARNING, "client disconnected due to error");
         }
         finally {

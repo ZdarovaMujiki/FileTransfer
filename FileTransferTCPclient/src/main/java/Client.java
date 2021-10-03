@@ -8,10 +8,9 @@ import java.util.logging.Level;
 
 @Log
 public class Client {
-    static void sendFile(Socket clientSocket, File file) {
+    private static void sendFile(Socket clientSocket, File file) {
         try (InputStream socketInput = clientSocket.getInputStream();
              OutputStream socketOutput = clientSocket.getOutputStream()) {
-
             SendProtocol sendProtocol = new SendProtocol(clientSocket, file);
 
             sendProtocol.sendFileName();
